@@ -1,5 +1,1 @@
-require "mini_sanity/version"
-
-module MiniSanity
-  # Your code goes here...
-end
+require_relative "mini_sanity/version"
