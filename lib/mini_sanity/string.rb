@@ -42,4 +42,27 @@ class String
     self
   end
 
+  # Checks that the String does not match a given regular expression,
+  # and returns the String unmodified.  If the String fails this check,
+  # an exception is raised.
+  #
+  # @example
+  #   "abc".refute_match!(/x/)  # == "abc"
+  #   "abc".refute_match!(/b/)  # raises exception
+  #
+  # @param regexp [Regexp]
+  #   regular expression to check
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the String matches +regexp+
+  def refute_match!(regexp, name = nil)
+    if regexp =~ self
+      descriptor = name ? "#{name} (#{self.inspect})" : self.inspect
+      raise MiniSanity::Error.new("#{descriptor} matches #{regexp.inspect}; expected no match")
+    end
+    self
+  end
+
 end

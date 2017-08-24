@@ -18,4 +18,12 @@ class StringTest < Minitest::Test
     refute_sanity {|name| "abc".assert_match!(/x/, name) }
   end
 
+  def test_refute_match_pass
+    assert_sanity("abc") {|s| s.refute_match!(/x/) }
+  end
+
+  def test_refute_match_fail
+    refute_sanity {|name| "abc".refute_match!(/b/, name) }
+  end
+
 end
