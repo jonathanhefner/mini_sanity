@@ -26,4 +26,12 @@ class ObjectTest < Minitest::Test
     refute_sanity {|name| (42).assert_kind_of!(Float, name) }
   end
 
+  def test_assert_respond_to_pass
+    assert_sanity("abc") {|s| s.assert_respond_to!(:empty?) }
+  end
+
+  def test_assert_respond_to_fail
+    refute_sanity {|name| "abc".assert_respond_to!(:pop, name) }
+  end
+
 end
