@@ -18,4 +18,12 @@ class ObjectTest < Minitest::Test
     refute_sanity {|name| "abc".assert_instance_of!(Numeric, name) }
   end
 
+  def test_assert_kind_of_pass
+    assert_sanity(42) {|i| i.assert_kind_of!(Numeric) }
+  end
+
+  def test_assert_kind_of_fail
+    refute_sanity {|name| (42).assert_kind_of!(Float, name) }
+  end
+
 end

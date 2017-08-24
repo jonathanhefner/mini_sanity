@@ -43,4 +43,27 @@ class Object
     self
   end
 
+  # Checks that the Object is an instance of a given class or one of its
+  # subclasses, and returns the Object unmodified.  If the Object fails
+  # this check, an exception is raised.
+  #
+  # @example
+  #   42.assert_kind_of!(Numeric)  # == 42
+  #   42.assert_kind_of!(Float)    # raises exception
+  #
+  # @param klass [Class]
+  #   class to check
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the Object is not an instance of +klass+ or its subclasses
+  def assert_kind_of!(klass, name = nil)
+    unless self.kind_of?(klass)
+      prelude = name ? "#{name} is instance of #{self.class}" : "unexpected #{self.class}"
+      raise MiniSanity::Error.new("#{prelude}; expected #{klass} or one of its subclasses")
+    end
+    self
+  end
+
 end
