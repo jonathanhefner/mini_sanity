@@ -6,7 +6,11 @@ require "minitest/autorun"
 class Minitest::Test
 
   def assert_sanity(subject, &block)
-    assert_equal subject, block.call(subject)
+    if subject.nil?
+      assert_nil block.call(subject)
+    else
+      assert_equal subject, block.call(subject)
+    end
   end
 
   def refute_sanity(subject_name = "INSAAANE", &block)
