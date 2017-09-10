@@ -4,8 +4,8 @@ class String
   # unmodified.  If the String fails this check, an exception is raised.
   #
   # @example
-  #   "abc".refute_empty!  # == "abc"
-  #   "".refute_empty!     # raises exception
+  #   "result".refute_empty!  # == "result"
+  #   "".refute_empty!        # raises exception
   #
   # @param name [String, Symbol]
   #   optional name to include in the error message
@@ -26,8 +26,8 @@ class String
   # exception is raised.
   #
   # @example
-  #   "abc".assert_match!(/b/)  # == "abc"
-  #   "abc".assert_match!(/x/)  # raises exception
+  #   "good result".assert_match!(/^good/)  # == "good result"
+  #   "bad result".assert_match!(/^good/)   # raises exception
   #
   # @param regexp [Regexp]
   #   regular expression to check
@@ -50,8 +50,8 @@ class String
   # an exception is raised.
   #
   # @example
-  #   "abc".refute_match!(/x/)  # == "abc"
-  #   "abc".refute_match!(/b/)  # raises exception
+  #   "good result".refute_match!(/^bad/)  # == "good result"
+  #   "bad result".refute_match!(/^bad/)   # raises exception
   #
   # @param regexp [Regexp]
   #   regular expression to check

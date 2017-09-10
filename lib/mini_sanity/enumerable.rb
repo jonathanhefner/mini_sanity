@@ -5,8 +5,8 @@ module Enumerable
   # raised.
   #
   # @example
-  #   [7, 8].refute_empty!  # == [7, 8]
-  #   [].refute_empty!      # raises exception
+  #   ["result 1"].refute_empty!  # == ["result 1"]
+  #   [].refute_empty!            # raises exception
   #
   # @param name [String, Symbol]
   #   optional name to include in the error message

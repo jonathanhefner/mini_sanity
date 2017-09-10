@@ -4,8 +4,8 @@ class Object
   # unmodified.  If the Object fails this check, an exception is raised.
   #
   # @example
-  #   [7, 8].first.refute_nil!  # == 7
-  #   [].first.refute_nil!      # raises exception
+  #   ["result 1"].first.refute_nil!  # == "result 1"
+  #   [].first.refute_nil!            # raises exception
   #
   # @param name [String, Symbol]
   #   optional name to include in the error message
@@ -26,8 +26,8 @@ class Object
   # is raised.
   #
   # @example
-  #   "abc".assert_instance_of!(String)   # == "abc"
-  #   "abc".assert_instance_of!(Numeric)  # raises exception
+  #   123.assert_instance_of!(Numeric)  # == 123
+  #   123.assert_instance_of!(String)   # raises exception
   #
   # @param klass [Class]
   #   class to check
@@ -50,8 +50,8 @@ class Object
   # this check, an exception is raised.
   #
   # @example
-  #   42.assert_kind_of!(Numeric)  # == 42
-  #   42.assert_kind_of!(Float)    # raises exception
+  #   123.assert_kind_of!(Numeric)  # == 123
+  #   123.assert_kind_of!(Float)    # raises exception
   #
   # @param klass [Class]
   #   class to check
