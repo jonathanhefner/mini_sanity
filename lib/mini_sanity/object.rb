@@ -69,6 +69,30 @@ class Object
     self
   end
 
+  # Checks that the Object does not equal a given reject value, and
+  # returns the Object unmodified.  If the Object fails this check, an
+  # exception is raised.
+  #
+  # @example
+  #   "good".refute_equal!("bad")  # == "good"
+  #   "bad".refute_equal!("bad")   # raises exception
+  #
+  # @param reject [Object]
+  #   value to reject
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the Object equals +reject+
+  def refute_equal!(reject, name = nil)
+    if self == reject
+      raise MiniSanity::Error.new(name,
+        "not #{reject.inspect}",
+        self.inspect)
+    end
+    self
+  end
+
   # Checks that the Object is an instance of a given class, and returns
   # the Object unmodified.  If the Object fails this check, an exception
   # is raised.
