@@ -14,8 +14,9 @@ class Object
   #   if the Object is nil
   def refute_nil!(name = nil)
     if self.nil?
-      message = name ? "#{name} is nil" : "unexpected nil"
-      raise MiniSanity::Error.new(message)
+      raise MiniSanity::Error.new(name,
+        "non-nil value",
+        "nil")
     end
     self
   end
@@ -36,9 +37,10 @@ class Object
   # @raise [MiniSanity::Error]
   #   if the Object is not an instance of +klass+
   def assert_instance_of!(klass, name = nil)
-    unless self.instance_of?(klass)
-      prelude = name ? "#{name} is instance of #{self.class}" : "unexpected #{self.class}"
-      raise MiniSanity::Error.new("#{prelude}; expected #{klass}")
+    if !self.instance_of?(klass)
+      raise MiniSanity::Error.new(name,
+        "instance of #{klass}",
+        "instance of #{self.class}: #{self.inspect}")
     end
     self
   end
@@ -59,9 +61,10 @@ class Object
   # @raise [MiniSanity::Error]
   #   if the Object is not an instance of +klass+ or its subclasses
   def assert_kind_of!(klass, name = nil)
-    unless self.kind_of?(klass)
-      prelude = name ? "#{name} is instance of #{self.class}" : "unexpected #{self.class}"
-      raise MiniSanity::Error.new("#{prelude}; expected #{klass} or one of its subclasses")
+    if !self.kind_of?(klass)
+      raise MiniSanity::Error.new(name,
+        "instance of #{klass} or one of its subclasses",
+        "instance of #{self.class}: #{self.inspect}")
     end
     self
   end
@@ -82,8 +85,10 @@ class Object
   # @raise [MiniSanity::Error]
   #   if the Object does not respond to +method_name+
   def assert_respond_to!(method_name, name = nil)
-    unless self.respond_to?(method_name)
-      raise MiniSanity::Error.new("#{name || self.class} does not respond to #{method_name}")
+    if !self.respond_to?(method_name)
+      raise MiniSanity::Error.new(name,
+        "object responding to method #{method_name}",
+        "instance of #{self.class}: #{self.inspect}")
     end
     self
   end

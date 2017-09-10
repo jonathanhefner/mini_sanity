@@ -14,7 +14,9 @@ class String
   #   if the String is empty
   def refute_empty!(name = nil)
     if self.empty?
-      raise MiniSanity::Error.new("#{name || self.class} is empty")
+      raise MiniSanity::Error.new(name,
+        "non-empty #{self.class}",
+        self.inspect)
     end
     self
   end
@@ -35,9 +37,10 @@ class String
   # @raise [MiniSanity::Error]
   #   if the String does not match +regexp+
   def assert_match!(regexp, name = nil)
-    unless regexp =~ self
-      descriptor = name ? "#{name} (#{self.inspect})" : self.inspect
-      raise MiniSanity::Error.new("#{descriptor} does not match #{regexp.inspect}")
+    if regexp !~ self
+      raise MiniSanity::Error.new(name,
+        "#{self.class} matching #{regexp.inspect}",
+        self.inspect)
     end
     self
   end
@@ -59,8 +62,9 @@ class String
   #   if the String matches +regexp+
   def refute_match!(regexp, name = nil)
     if regexp =~ self
-      descriptor = name ? "#{name} (#{self.inspect})" : self.inspect
-      raise MiniSanity::Error.new("#{descriptor} matches #{regexp.inspect}; expected no match")
+      raise MiniSanity::Error.new(name,
+        "#{self.class} not matching #{regexp.inspect}",
+        self.inspect)
     end
     self
   end

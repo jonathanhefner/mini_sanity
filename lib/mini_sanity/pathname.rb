@@ -14,9 +14,10 @@ class Pathname
   # @raise [MiniSanity::Error]
   #   if the file or directory indicated by the Pathname does not exist
   def assert_exist!(name = nil)
-    unless self.exist?
-      descriptor = name ? "#{name} (#{self})" : self.to_s
-      raise MiniSanity::Error.new("#{descriptor} does not exist")
+    if !self.exist?
+      raise MiniSanity::Error.new(name,
+        "existent file or directory",
+        "#{self} does not exist")
     end
     self
   end
@@ -36,8 +37,9 @@ class Pathname
   #   if the file or directory indicated by the Pathname already exists
   def refute_exist!(name = nil)
     if self.exist?
-      descriptor = name ? "#{name} (#{self})" : self.to_s
-      raise MiniSanity::Error.new("#{descriptor} already exists")
+      raise MiniSanity::Error.new(name,
+        "non-existent file or directory",
+        "#{self} already exists")
     end
     self
   end

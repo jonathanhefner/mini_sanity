@@ -15,7 +15,9 @@ module Enumerable
   #   if the Enumerable is empty
   def refute_empty!(name = nil)
     if self.empty?
-      raise MiniSanity::Error.new("#{name || self.class} is empty")
+      raise MiniSanity::Error.new(name,
+        "non-empty #{self.class}",
+        self.inspect)
     end
     self
   end
