@@ -1,5 +1,29 @@
 class Object
 
+  # Checks that the Object is nil, and returns nil.  If the Object fails
+  # this check, an exception is raised.
+  #
+  # @example
+  #   result = {}
+  #   result[:error].assert_nil!  # == nil
+  #
+  #   result = { error: "something went wrong" }
+  #   result[:error].assert_nil!  # == raises exception
+  #
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the Object is not nil
+  def assert_nil!(name = nil)
+    if !self.nil?
+      raise MiniSanity::Error.new(name,
+        "nil",
+        self.inspect)
+    end
+    self
+  end
+
   # Checks that the Object is not nil, and returns the Object
   # unmodified.  If the Object fails this check, an exception is raised.
   #

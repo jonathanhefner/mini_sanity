@@ -32,6 +32,7 @@ end.uniq
 - [Object](http://www.rubydoc.info/gems/mini_sanity/Object)
   - [#assert_instance_of!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_instance_of%21)
   - [#assert_kind_of!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_kind_of%21)
+  - [#assert_nil!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_nil%21)
   - [#assert_respond_to!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_respond_to%21)
   - [#refute_nil!](http://www.rubydoc.info/gems/mini_sanity/Object:refute_nil%21)
 - [Enumerable](http://www.rubydoc.info/gems/mini_sanity/Enumerable)
