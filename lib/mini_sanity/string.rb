@@ -1,5 +1,26 @@
 class String
 
+  # Checks that the String is empty, and returns the String unmodified.
+  # If the String fails this check, an exception is raised.
+  #
+  # @example
+  #   "".assert_empty!     # == ""
+  #   "bad".assert_empty!  # raises exception
+  #
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the String is not empty
+  def assert_empty!(name = nil)
+    if !self.empty?
+      raise MiniSanity::Error.new(name,
+        "empty #{self.class}",
+        self.inspect)
+    end
+    self
+  end
+
   # Checks that the String is not empty, and returns the String
   # unmodified.  If the String fails this check, an exception is raised.
   #

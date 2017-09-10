@@ -38,6 +38,7 @@ end.uniq
   - [#assert_empty!](http://www.rubydoc.info/gems/mini_sanity/Enumerable:assert_empty%21)
   - [#refute_empty!](http://www.rubydoc.info/gems/mini_sanity/Enumerable:refute_empty%21)
 - [String](http://www.rubydoc.info/gems/mini_sanity/String)
+  - [#assert_empty!](http://www.rubydoc.info/gems/mini_sanity/String:assert_empty%21)
   - [#assert_match!](http://www.rubydoc.info/gems/mini_sanity/String:assert_match%21)
   - [#refute_empty!](http://www.rubydoc.info/gems/mini_sanity/String:refute_empty%21)
   - [#refute_match!](http://www.rubydoc.info/gems/mini_sanity/String:refute_match%21)
