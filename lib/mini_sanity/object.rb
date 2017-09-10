@@ -45,6 +45,30 @@ class Object
     self
   end
 
+  # Checks that the Object equals a given expected value, and returns
+  # the Object unmodified.  If the Object fails this check, an exception
+  # is raised.
+  #
+  # @example
+  #   "good".assert_equal!("good")  # == "good"
+  #   "bad".assert_equal!("good")   # raises exception
+  #
+  # @param expect [Object]
+  #   value to expect
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the Object does not equal +expect+
+  def assert_equal!(expect, name = nil)
+    if self != expect
+      raise MiniSanity::Error.new(name,
+        expect.inspect,
+        self.inspect)
+    end
+    self
+  end
+
   # Checks that the Object is an instance of a given class, and returns
   # the Object unmodified.  If the Object fails this check, an exception
   # is raised.

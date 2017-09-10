@@ -18,6 +18,14 @@ class ObjectTest < Minitest::Test
     refute_sanity {|name| nil.refute_nil!(name) }
   end
 
+  def test_assert_equal_pass
+    assert_sanity("good") {|o| o.assert_equal!("good") }
+  end
+
+  def test_assert_equal_fail
+    refute_sanity {|name| "bad".assert_equal!("good", name) }
+  end
+
   def test_assert_instance_of_pass
     assert_sanity("abc") {|s| s.assert_instance_of!(String) }
   end
