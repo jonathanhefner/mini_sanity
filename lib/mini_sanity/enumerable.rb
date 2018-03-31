@@ -14,7 +14,9 @@ module Enumerable
   # @raise [MiniSanity::Error]
   #   if the Enumerable is empty
   def refute_empty!(name = nil)
-    if self.empty?
+    # NOTE use #any? instead of #none? because Array#none? seems to be
+    # significantly slower than Array#any? (and likewise for Hash)
+    if !self.any?{ true }
       raise MiniSanity::Error.new(name,
         "non-empty #{self.class}",
         self.inspect)
