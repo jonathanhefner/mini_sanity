@@ -50,4 +50,20 @@ class StringTest < Minitest::Test
     refute_sanity("abc"){|str, name| str.assert_length!(0...str.length, name) }
   end
 
+  def test_refute_length_pass_with_int
+    assert_sanity("abc"){|str| str.refute_length!(str.length + 1) }
+  end
+
+  def test_refute_length_pass_with_range
+    assert_sanity("abc"){|str| str.refute_length!(0...str.length) }
+  end
+
+  def test_refute_length_fail_with_int
+    refute_sanity("abc"){|str, name| str.refute_length!(str.length, name) }
+  end
+
+  def test_refute_length_fail_with_range
+    refute_sanity("abc"){|str, name| str.refute_length!(0..str.length, name) }
+  end
+
 end

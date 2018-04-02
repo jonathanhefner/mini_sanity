@@ -67,6 +67,31 @@ class String
     self
   end
 
+  # Checks that the String does not match a given length, and returns
+  # the String unmodified.  If the String fails this check, an exception
+  # is raised.
+  #
+  # @example
+  #   "password".refute_length!(0)           # == "password"
+  #   "long password".refute_length!(0...8)  # == "long password"
+  #   "pass".refute_length!(0...8)           # == raises exception
+  #
+  # @param length [Integer, Range<Integer>]
+  #   length to not match
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the String length matches +length+
+  def refute_length!(length, name = nil)
+    if length === self.length
+      raise MiniSanity::Error.new(name,
+        "#{self.class} not having #{length} characters",
+        self.inspect)
+    end
+    self
+  end
+
   # Checks that the String matches a given regular expression, and
   # returns the String unmodified.  If the String fails this check, an
   # exception is raised.

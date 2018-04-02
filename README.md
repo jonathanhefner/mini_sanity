@@ -48,6 +48,7 @@ end.uniq
   - [#assert_length!](http://www.rubydoc.info/gems/mini_sanity/String:assert_length%21)
   - [#assert_match!](http://www.rubydoc.info/gems/mini_sanity/String:assert_match%21)
   - [#refute_empty!](http://www.rubydoc.info/gems/mini_sanity/String:refute_empty%21)
+  - [#refute_length!](http://www.rubydoc.info/gems/mini_sanity/String:refute_length%21)
   - [#refute_match!](http://www.rubydoc.info/gems/mini_sanity/String:refute_match%21)
 - [Pathname](http://www.rubydoc.info/gems/mini_sanity/Pathname)
   - [#assert_exist!](http://www.rubydoc.info/gems/mini_sanity/Pathname:assert_exist%21)
