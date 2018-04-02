@@ -3,59 +3,59 @@ require "test_helper"
 class ObjectTest < Minitest::Test
 
   def test_assert_nil_pass
-    assert_sanity(nil) {|o| o.assert_nil! }
+    assert_sanity(nil){|nill| nill.assert_nil! }
   end
 
   def test_assert_nil_fail
-    refute_sanity {|name| Object.new.assert_nil!(name) }
+    refute_sanity(Object.new){|obj, name| obj.assert_nil!(name) }
   end
 
   def test_refute_nil_pass
-    assert_sanity(Object.new) {|o| o.refute_nil! }
+    assert_sanity(Object.new){|obj| obj.refute_nil! }
   end
 
   def test_refute_nil_fail
-    refute_sanity {|name| nil.refute_nil!(name) }
+    refute_sanity(nil){|nill, name| nill.refute_nil!(name) }
   end
 
   def test_assert_equal_pass
-    assert_sanity("good") {|o| o.assert_equal!("good") }
+    assert_sanity("ok"){|str| str.assert_equal!(str + "") }
   end
 
   def test_assert_equal_fail
-    refute_sanity {|name| "bad".assert_equal!("good", name) }
+    refute_sanity(42){|int, name| int.assert_equal!(int + 1, name) }
   end
 
   def test_refute_equal_pass
-    assert_sanity("good") {|o| o.refute_equal!("bad") }
+    assert_sanity("ok"){|str| str.refute_equal!("not" + str) }
   end
 
   def test_refute_equal_fail
-    refute_sanity {|name| "bad".refute_equal!("bad", name) }
+    refute_sanity(42){|int, name| int.refute_equal!(int, name) }
   end
 
   def test_assert_instance_of_pass
-    assert_sanity("abc") {|s| s.assert_instance_of!(String) }
+    assert_sanity("abc"){|str| str.assert_instance_of!(String) }
   end
 
   def test_assert_instance_of_fail
-    refute_sanity {|name| "abc".assert_instance_of!(Numeric, name) }
+    refute_sanity("abc"){|str, name| str.assert_instance_of!(Numeric, name) }
   end
 
   def test_assert_kind_of_pass
-    assert_sanity(42) {|i| i.assert_kind_of!(Numeric) }
+    assert_sanity(42){|int| int.assert_kind_of!(Numeric) }
   end
 
   def test_assert_kind_of_fail
-    refute_sanity {|name| (42).assert_kind_of!(Float, name) }
+    refute_sanity(42){|int, name| int.assert_kind_of!(Float, name) }
   end
 
   def test_assert_respond_to_pass
-    assert_sanity("abc") {|s| s.assert_respond_to!(:empty?) }
+    assert_sanity([]){|array| array.assert_respond_to!(:empty?) }
   end
 
   def test_assert_respond_to_fail
-    refute_sanity {|name| "abc".assert_respond_to!(:pop, name) }
+    refute_sanity([]){|array, name| array.assert_respond_to!(:gsub, name) }
   end
 
 end

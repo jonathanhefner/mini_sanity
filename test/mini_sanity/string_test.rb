@@ -3,35 +3,35 @@ require "test_helper"
 class StringTest < Minitest::Test
 
   def test_assert_empty_pass
-    assert_sanity("") {|s| s.assert_empty! }
+    assert_sanity(""){|str| str.assert_empty! }
   end
 
   def test_assert_empty_fail
-    refute_sanity {|name| "abc".assert_empty!(name) }
+    refute_sanity("abc"){|str, name| str.assert_empty!(name) }
   end
 
   def test_refute_empty_pass
-    assert_sanity("abc") {|s| s.refute_empty! }
+    assert_sanity("abc"){|str| str.refute_empty! }
   end
 
   def test_refute_empty_fail
-    refute_sanity {|name| "".refute_empty!(name) }
+    refute_sanity(""){|str, name| str.refute_empty!(name) }
   end
 
   def test_assert_match_pass
-    assert_sanity("abc") {|s| s.assert_match!(/b/) }
+    assert_sanity("abc"){|str| str.assert_match!(/./) }
   end
 
   def test_assert_match_fail
-    refute_sanity {|name| "abc".assert_match!(/x/, name) }
+    refute_sanity("abc"){|str, name| str.assert_match!(/\n/, name) }
   end
 
   def test_refute_match_pass
-    assert_sanity("abc") {|s| s.refute_match!(/x/) }
+    assert_sanity("abc"){|str| str.refute_match!(/\n/) }
   end
 
   def test_refute_match_fail
-    refute_sanity {|name| "abc".refute_match!(/b/, name) }
+    refute_sanity("abc"){|str, name| str.refute_match!(/./, name) }
   end
 
 end
