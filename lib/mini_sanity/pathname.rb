@@ -1,6 +1,6 @@
 class Pathname
 
-  # Checks that the file or directory indicated by the Pathname exists,
+  # Checks that the Pathname represents an existing file or directory,
   # and returns the Pathname unmodified.  If the Pathname fails this
   # check, an exception is raised.
   #
@@ -12,7 +12,7 @@ class Pathname
   #   optional name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
-  #   if the file or directory indicated by the Pathname does not exist
+  #   if the Pathname does not represent an existing file or directory
   def assert_exist!(name = nil)
     if !self.exist?
       raise MiniSanity::Error.new(name,
@@ -22,9 +22,9 @@ class Pathname
     self
   end
 
-  # Checks that the file or directory indicated by the Pathname does
-  # not already exist, and returns the Pathname unmodified.  If the
-  # Pathname fails this check, an exception is raised.
+  # Checks that the Pathname does not represent an existing file or
+  # directory, and returns the Pathname unmodified.  If the Pathname
+  # fails this check, an exception is raised.
   #
   # @example
   #   Pathname.new("/dev/null/nope").refute_exist!  # == Pathname.new("/dev/null/nope")
@@ -34,7 +34,7 @@ class Pathname
   #   optional name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
-  #   if the file or directory indicated by the Pathname already exists
+  #   if the Pathname represents an existing file or directory
   def refute_exist!(name = nil)
     if self.exist?
       raise MiniSanity::Error.new(name,
