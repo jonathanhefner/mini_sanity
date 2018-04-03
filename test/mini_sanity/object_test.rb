@@ -42,6 +42,14 @@ class ObjectTest < Minitest::Test
     refute_sanity(42){|int, name| int.assert_in!([int - 1, int + 1], name) }
   end
 
+  def test_refute_in_pass
+    assert_sanity("ok"){|str| str.refute_in!(["not" + str]) }
+  end
+
+  def test_refute_in_fail
+    refute_sanity(42){|int, name| int.refute_in!(int..int, name) }
+  end
+
   def test_assert_instance_of_pass
     assert_sanity("abc"){|str| str.assert_instance_of!(String) }
   end

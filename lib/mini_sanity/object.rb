@@ -117,6 +117,30 @@ class Object
     self
   end
 
+  # Checks that the Object is not included in a given collection, and
+  # returns the Object unmodified.  If the Object fails this check, an
+  # exception is raised.
+  #
+  # @example
+  #   "good".refute_in!(["bad", "poor", "fail"])  # == "good"
+  #   "bad".refute_in!(["bad", "poor", "fail"])   # raises exception
+  #
+  # @param prohibited [Enumerable, #include?]
+  #   collection of prohibited values
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the Object is included in +prohibited+
+  def refute_in!(prohibited, name = nil)
+    if prohibited.include?(self)
+      raise MiniSanity::Error.new(name,
+        "value not included in #{prohibited.inspect}",
+        self.inspect)
+    end
+    self
+  end
+
   # Checks that the Object is an instance of a given class, and returns
   # the Object unmodified.  If the Object fails this check, an exception
   # is raised.
