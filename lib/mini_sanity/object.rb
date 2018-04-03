@@ -93,6 +93,30 @@ class Object
     self
   end
 
+  # Checks that the Object is included in a given collection, and
+  # returns the Object unmodified.  If the Object fails this check, an
+  # exception is raised.
+  #
+  # @example
+  #   "good".assert_in!(["ok", "good", "great"])  # == "good"
+  #   "bad".assert_in!(["ok", "good", "great"])   # raises exception
+  #
+  # @param permitted [Enumerable, #include?]
+  #   collection of permitted values
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the Object is not included in +permitted+
+  def assert_in!(permitted, name = nil)
+    if !permitted.include?(self)
+      raise MiniSanity::Error.new(name,
+        "value included in #{permitted.inspect}",
+        self.inspect)
+    end
+    self
+  end
+
   # Checks that the Object is an instance of a given class, and returns
   # the Object unmodified.  If the Object fails this check, an exception
   # is raised.

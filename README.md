@@ -31,6 +31,7 @@ end.uniq
 
 - [Object](http://www.rubydoc.info/gems/mini_sanity/Object)
   - [#assert_equal!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_equal%21)
+  - [#assert_in!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_in%21)
   - [#assert_instance_of!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_instance_of%21)
   - [#assert_kind_of!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_kind_of%21)
   - [#assert_nil!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_nil%21)
