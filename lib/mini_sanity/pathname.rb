@@ -88,4 +88,26 @@ class Pathname
     self
   end
 
+  # Checks that the Pathname represents an existing file, and returns
+  # the Pathname unmodified.  If the Pathname fails this check, an
+  # exception is raised.
+  #
+  # @example
+  #   Pathname.new(__FILE__).assert_file!  # == Pathname.new(__FILE__)
+  #   Pathname.new(__dir__).assert_file!   # == raises exception
+  #
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the Pathname does not represent an existing file
+  def assert_file!(name = nil)
+    if !self.file?
+      raise MiniSanity::Error.new(name,
+        "existent file",
+        "#{self} is not a file")
+    end
+    self
+  end
+
 end

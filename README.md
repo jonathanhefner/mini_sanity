@@ -55,6 +55,7 @@ end.uniq
 - [Pathname](http://www.rubydoc.info/gems/mini_sanity/Pathname)
   - [#assert_dir!](http://www.rubydoc.info/gems/mini_sanity/Pathname:assert_dir%21)
   - [#assert_exist!](http://www.rubydoc.info/gems/mini_sanity/Pathname:assert_exist%21)
+  - [#assert_file!](http://www.rubydoc.info/gems/mini_sanity/Pathname:assert_file%21)
   - [#refute_dir!](http://www.rubydoc.info/gems/mini_sanity/Pathname:refute_dir%21)
   - [#refute_exist!](http://www.rubydoc.info/gems/mini_sanity/Pathname:refute_exist%21)
 
