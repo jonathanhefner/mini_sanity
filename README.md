@@ -58,6 +58,7 @@ end.uniq
   - [#assert_file!](http://www.rubydoc.info/gems/mini_sanity/Pathname:assert_file%21)
   - [#refute_dir!](http://www.rubydoc.info/gems/mini_sanity/Pathname:refute_dir%21)
   - [#refute_exist!](http://www.rubydoc.info/gems/mini_sanity/Pathname:refute_exist%21)
+  - [#refute_file!](http://www.rubydoc.info/gems/mini_sanity/Pathname:refute_file%21)
 
 
 ## Installation
