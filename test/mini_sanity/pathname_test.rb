@@ -27,4 +27,12 @@ class PathnameTest < Minitest::Test
     refute_sanity(Pathname.new(__FILE__)){|path, name| path.assert_dir!(name) }
   end
 
+  def test_refute_dir_pass
+    assert_sanity(Pathname.new(__FILE__)){|path| path.refute_dir! }
+  end
+
+  def test_refute_dir_fail
+    refute_sanity(Pathname.new(__dir__)){|path, name| path.refute_dir!(name) }
+  end
+
 end
