@@ -44,4 +44,26 @@ class Pathname
     self
   end
 
+  # Checks that the Pathname represents an existing directory, and
+  # returns the Pathname unmodified.  If the Pathname fails this check,
+  # an exception is raised.
+  #
+  # @example
+  #   Pathname.new(__dir__).assert_dir!   # == Pathname.new(__dir__)
+  #   Pathname.new(__FILE__).assert_dir!  # == raises exception
+  #
+  # @param name [String, Symbol]
+  #   optional name to include in the error message
+  # @return [self]
+  # @raise [MiniSanity::Error]
+  #   if the Pathname does not represent an existing directory
+  def assert_dir!(name = nil)
+    if !self.directory?
+      raise MiniSanity::Error.new(name,
+        "existent directory",
+        "#{self} is not a directory")
+    end
+    self
+  end
+
 end
