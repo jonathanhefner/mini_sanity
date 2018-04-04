@@ -9,6 +9,7 @@ end
 desc "Launch IRB with this gem pre-loaded"
 task :irb do
   require "mini_sanity"
+  require "mini_sanity/util"
   require "irb"
   ARGV.clear
   IRB.start

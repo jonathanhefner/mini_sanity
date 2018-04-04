@@ -61,6 +61,14 @@ end.uniq
   - [#refute_file!](http://www.rubydoc.info/gems/mini_sanity/Pathname:refute_file%21)
 
 
+## Util API
+
+*mini_sanity* also includes a few optional utility methods which perform
+some function, check an assertion on the result, and raise an error with
+a helpful message if the assertion fails.  You must add
+`require "mini_sanity/util"` to your script to access these methods.
+
+
 ## Installation
 
 Install from [Ruby Gems](https://rubygems.org/gems/mini_sanity):
@@ -73,6 +81,7 @@ Then require in your Ruby script:
 
 ```ruby
 require "mini_sanity"
+require "mini_sanity/util" # OPTIONAL
 ```
 
 
