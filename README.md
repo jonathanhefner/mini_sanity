@@ -1,13 +1,13 @@
 # mini_sanity
 
-In-line [sanity checks], written as extensions to core Ruby objects.  See
-API listing below, or browse the [full documentation].
+In-line [sanity checks], written as extensions to core Ruby objects.
+See API listing below, or browse the [full documentation].
 
 [sanity checks]: https://en.wikipedia.org/wiki/Sanity_check
 [full documentation]: http://www.rubydoc.info/gems/mini_sanity/
 
 
-# Example
+## Example
 
 ```ruby
 require "json"
@@ -27,7 +27,7 @@ end.uniq
 ```
 
 
-# API
+## API
 
 - [Object](http://www.rubydoc.info/gems/mini_sanity/Object)
   - [#assert_equal!](http://www.rubydoc.info/gems/mini_sanity/Object:assert_equal%21)
