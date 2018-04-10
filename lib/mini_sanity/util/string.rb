@@ -24,4 +24,35 @@ class String
     result
   end
 
+  # Like {https://ruby-doc.org/core/String.html#method-i-sub
+  # +String#sub+}, but raises an exception if the result is the same as
+  # the original String.
+  #
+  # @example
+  #   "author: YOUR_NAME".change(/\bYOUR_NAME\b/, "Me")  # == "author: Me"
+  #   "author: TODO".change(/\bYOUR_NAME\b/, "Me")       # raises exception
+  #
+  # @param pattern [Regexp, String]
+  #   pattern to search for
+  # @param replacement [String, Hash, &block]
+  #   substitution value (see +String#sub+ documentation for full details)
+  # @return [String]
+  # @raise [MiniSanity::Error]
+  #   if the result is the same as the original String
+  def change(pattern, replacement = nil, &replacement_block)
+    result = if replacement
+      self.sub(pattern, replacement)
+    else
+      self.sub(pattern, &replacement_block)
+    end
+
+    if result == self
+      raise MiniSanity::Error.new(nil,
+        "String matching #{pattern.inspect}",
+        self.inspect)
+    end
+
+    result
+  end
+
 end

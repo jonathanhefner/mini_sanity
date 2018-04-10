@@ -19,4 +19,23 @@ class StringTest < Minitest::Test
     end
   end
 
+  def test_change_like_sub
+    strings = %w[abc aaa x]
+    pattern = /a/
+    replacement = ""
+
+    strings.each do |str|
+      if pattern =~ str
+        original = str.dup
+        expected = str.sub(pattern, replacement)
+        assert_equal expected, str.change(pattern, replacement)
+        assert_equal expected, str.change(pattern, Hash.new{ replacement })
+        assert_equal expected, (str.change(pattern){ replacement })
+        assert_equal original, str, "original string was mutated"
+      else
+        assert_raises(MiniSanity::Error) { str.change(pattern, replacement) }
+      end
+    end
+  end
+
 end

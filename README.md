@@ -71,6 +71,7 @@ a helpful message if the assertion fails.  You must add
 - [Regexp](http://www.rubydoc.info/gems/mini_sanity/Regexp)
   - [#match!](http://www.rubydoc.info/gems/mini_sanity/Regexp:match%21)
 - [String](http://www.rubydoc.info/gems/mini_sanity/String)
+  - [#change](http://www.rubydoc.info/gems/mini_sanity/String:change)
   - [#match!](http://www.rubydoc.info/gems/mini_sanity/String:match%21)
 
 
