@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "mini_sanity"
   spec.version       = MiniSanity::VERSION
   spec.authors       = ["Jonathan Hefner"]
-  spec.email         = ["jonathan.hefner@gmail.com"]
+  spec.email         = ["jonathan@hefner.pro"]
 
   spec.summary       = %q{In-line sanity checks}
   spec.homepage      = "https://github.com/jonathanhefner/mini_sanity"
