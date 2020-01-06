@@ -96,8 +96,7 @@ require "mini_sanity/util" # OPTIONAL
 
 ## Contributing
 
-Run `rake test` to run the tests.  You can also run `rake irb` for an
-interactive prompt that pre-loads the project code.
+Run `rake test` to run the tests.
 
 
 ## License

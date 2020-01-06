@@ -6,15 +6,6 @@ require "yard"
 YARD::Rake::YardocTask.new(:doc) do |t|
 end
 
-desc "Launch IRB with this gem pre-loaded"
-task :irb do
-  require "mini_sanity"
-  require "mini_sanity/util"
-  require "irb"
-  ARGV.clear
-  IRB.start
-end
-
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
   t.libs << "lib"
