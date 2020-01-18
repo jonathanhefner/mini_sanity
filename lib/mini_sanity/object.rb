@@ -1,17 +1,17 @@
 class Object
 
-  # Checks that the Object is nil, and returns nil.  If the Object fails
-  # this check, an exception is raised.
+  # Checks that the Object is nil, and returns nil.  Raises an exception
+  # if the Object fails this check.
   #
   # @example
-  #   result = {}
-  #   result[:error].assert_nil!  # == nil
+  #   record = { good: "good thing", bad: nil }
+  #   record[:bad].assert_nil!  # == nil
   #
-  #   result = { error: "something went wrong" }
-  #   result[:error].assert_nil!  # == raises exception
+  #   record[:bad] = "bad thing"
+  #   record[:bad].assert_nil!  # raises exception
   #
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
   #   if the Object is not nil
@@ -25,14 +25,17 @@ class Object
   end
 
   # Checks that the Object is not nil, and returns the Object
-  # unmodified.  If the Object fails this check, an exception is raised.
+  # unmodified.  Raises an exception if the Object fails this check.
   #
   # @example
-  #   ["result 1"].first.refute_nil!  # == "result 1"
-  #   [].first.refute_nil!            # raises exception
+  #   record = { good: "good thing", bad: nil }
+  #   record[:good].refute_nil!  # == "good thing"
+  #
+  #   record[:good] = nil
+  #   record[:good].refute_nil!  # raises exception
   #
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
   #   if the Object is nil
@@ -45,66 +48,63 @@ class Object
     self
   end
 
-  # Checks that the Object equals a given expected value, and returns
-  # the Object unmodified.  If the Object fails this check, an exception
-  # is raised.
+  # Checks that the Object equals (via +==+) a given +expected+ value,
+  # and returns the Object unmodified.  Raises an exception if the
+  # Object fails this check.
   #
   # @example
   #   "good".assert_equal!("good")  # == "good"
   #   "bad".assert_equal!("good")   # raises exception
   #
-  # @param expect [Object]
-  #   value to expect
+  # @param expected [Object]
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
-  #   if the Object does not equal +expect+
-  def assert_equal!(expect, name = nil)
-    if self != expect
+  #   if the Object does not equal +expected+
+  def assert_equal!(expected, name = nil)
+    if self != expected
       raise MiniSanity::Error.new(name,
-        expect.inspect,
+        expected.inspect,
         self.inspect)
     end
     self
   end
 
-  # Checks that the Object does not equal a given reject value, and
-  # returns the Object unmodified.  If the Object fails this check, an
-  # exception is raised.
+  # Checks that the Object does not equal (via +==+) a given +forbidden+
+  # value, and returns the Object unmodified.  Raises an exception if
+  # the Object fails this check.
   #
   # @example
   #   "good".refute_equal!("bad")  # == "good"
   #   "bad".refute_equal!("bad")   # raises exception
   #
-  # @param reject [Object]
-  #   value to reject
+  # @param forbidden [Object]
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
-  #   if the Object equals +reject+
-  def refute_equal!(reject, name = nil)
-    if self == reject
+  #   if the Object equals +forbidden+
+  def refute_equal!(forbidden, name = nil)
+    if self == forbidden
       raise MiniSanity::Error.new(name,
-        "not #{reject.inspect}",
+        "not #{forbidden.inspect}",
         self.inspect)
     end
     self
   end
 
-  # Checks that the Object is included in a given collection, and
-  # returns the Object unmodified.  If the Object fails this check, an
-  # exception is raised.
+  # Checks that the Object is one of the given +permitted+ values, and
+  # returns the Object unmodified.  Raises an exception if the Object
+  # fails this check.
   #
   # @example
   #   "good".assert_in!(["ok", "good", "great"])  # == "good"
   #   "bad".assert_in!(["ok", "good", "great"])   # raises exception
   #
   # @param permitted [Enumerable, #include?]
-  #   collection of permitted values
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
   #   if the Object is not included in +permitted+
@@ -117,18 +117,17 @@ class Object
     self
   end
 
-  # Checks that the Object is not included in a given collection, and
-  # returns the Object unmodified.  If the Object fails this check, an
-  # exception is raised.
+  # Checks that the Object is not one of the given +prohibited+ values,
+  # and returns the Object unmodified.  Raises an exception if the
+  # Object fails this check.
   #
   # @example
   #   "good".refute_in!(["bad", "poor", "fail"])  # == "good"
   #   "bad".refute_in!(["bad", "poor", "fail"])   # raises exception
   #
   # @param prohibited [Enumerable, #include?]
-  #   collection of prohibited values
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
   #   if the Object is included in +prohibited+
@@ -142,17 +141,16 @@ class Object
   end
 
   # Checks that the Object is an instance of a given class, and returns
-  # the Object unmodified.  If the Object fails this check, an exception
-  # is raised.
+  # the Object unmodified.  Raises an exception if the Object fails this
+  # check.
   #
   # @example
-  #   123.assert_instance_of!(Numeric)  # == 123
-  #   123.assert_instance_of!(String)   # raises exception
+  #   (3.14).assert_instance_of!(Float)  # == 3.14
+  #   (3).assert_instance_of!(Float)     # raises exception
   #
   # @param klass [Class]
-  #   class to check
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
   #   if the Object is not an instance of +klass+
@@ -166,17 +164,16 @@ class Object
   end
 
   # Checks that the Object is an instance of a given class or one of its
-  # subclasses, and returns the Object unmodified.  If the Object fails
-  # this check, an exception is raised.
+  # subclasses, and returns the Object unmodified.  Raises an exception
+  # if the Object fails this check.
   #
   # @example
-  #   123.assert_kind_of!(Numeric)  # == 123
-  #   123.assert_kind_of!(Float)    # raises exception
+  #   (3.14).assert_kind_of!(Numeric)  # == 3.14
+  #   "3.14".assert_kind_of!(Numeric)  # raises exception
   #
   # @param klass [Class]
-  #   class to check
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
   #   if the Object is not an instance of +klass+ or its subclasses
@@ -190,17 +187,16 @@ class Object
   end
 
   # Checks that the Object responds to a given method, and returns the
-  # Object unmodified.  If the Object fails this check, an exception is
-  # raised.
+  # Object unmodified.  Raises an exception if the Object fails this
+  # check.
   #
   # @example
   #   "abc".assert_respond_to!(:empty?)  # == "abc"
   #   "abc".assert_respond_to!(:pop)     # raises exception
   #
   # @param method_name [String, Symbol]
-  #   name of method to check
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
   #   if the Object does not respond to +method_name+

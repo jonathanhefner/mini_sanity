@@ -1,6 +1,6 @@
 class Regexp
 
-  # Like {https://ruby-doc.org/core/Regexp.html#method-i-match
+  # Like {https://docs.ruby-lang.org/en/master/Regexp.html#method-i-match
   # +Regexp#match+}, but raises an exception if the match fails.
   #
   # @example
@@ -8,9 +8,9 @@ class Regexp
   #   /^([^@]+)@(.+)$/.match!("@user")             # raises exception
   #
   # @param str [String]
-  #   string to search
+  #   String to search
   # @param pos [Integer]
-  #   position in +str+ to begin the search
+  #   Position in +str+ to search from
   # @return [MatchData]
   # @raise [MiniSanity::Error]
   #   if the Regexp does not match +str+

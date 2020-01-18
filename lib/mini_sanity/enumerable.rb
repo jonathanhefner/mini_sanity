@@ -1,21 +1,17 @@
 module Enumerable
 
-  # Checks that the Enumerable is empty, and returns the Enumerable
-  # unmodified.  If the Enumerable fails this check, an exception is
-  # raised.
+  # Checks that the Enumerable is +empty?+, and returns the Enumerable
+  # unmodified.  Raises an exception if the Enumerable fails this check.
   #
   # @example
-  #   errors = []
-  #   errors.assert_empty!  # == []
-  #
-  #   errors = ["something went wrong"]
-  #   errors.assert_empty!  # raises exception
+  #   [].assert_empty!             # == []
+  #   ["bad thing"].assert_empty!  # raises exception
   #
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
-  #   if the Enumerable is not empty
+  #   if the Enumerable is not +empty?+
   def assert_empty!(name = nil)
     if self.any?{ true }
       raise MiniSanity::Error.new(name,
@@ -25,19 +21,19 @@ module Enumerable
     self
   end
 
-  # Checks that the Enumerable is not empty, and returns the Enumerable
-  # unmodified.  If the Enumerable fails this check, an exception is
-  # raised.
+  # Checks that the Enumerable is not +empty?+, and returns the
+  # Enumerable unmodified.  Raises an exception if the Enumerable fails
+  # this check.
   #
   # @example
-  #   ["result 1"].refute_empty!  # == ["result 1"]
-  #   [].refute_empty!            # raises exception
+  #   ["good thing"].refute_empty!  # == ["good thing"]
+  #   [].refute_empty!              # raises exception
   #
   # @param name [String, Symbol]
-  #   optional name to include in the error message
+  #   Name to include in the error message
   # @return [self]
   # @raise [MiniSanity::Error]
-  #   if the Enumerable is empty
+  #   if the Enumerable is +empty?+
   def refute_empty!(name = nil)
     # NOTE use #any? instead of #none? because Array#none? seems to be
     # significantly slower than Array#any? (and likewise for Hash)
