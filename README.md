@@ -80,13 +80,13 @@ a helpful message if the assertion fails.  You must add
 
 ## Installation
 
-Install from [Ruby Gems](https://rubygems.org/gems/mini_sanity):
+Install the [gem](https://rubygems.org/gems/mini_sanity):
 
 ```bash
 $ gem install mini_sanity
 ```
 
-Then require in your Ruby script:
+Then require in your Ruby code:
 
 ```ruby
 require "mini_sanity"
