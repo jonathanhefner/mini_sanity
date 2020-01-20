@@ -105,7 +105,7 @@ class String
   # @raise [MiniSanity::Error]
   #   if the String does not match +regexp+
   def assert_match!(regexp, name = nil)
-    if regexp !~ self
+    if !regexp.match?(self)
       raise MiniSanity::Error.new(name,
         "#{self.class} matching #{regexp.inspect}",
         self.inspect)
@@ -128,7 +128,7 @@ class String
   # @raise [MiniSanity::Error]
   #   if the String matches +regexp+
   def refute_match!(regexp, name = nil)
-    if regexp =~ self
+    if regexp.match?(self)
       raise MiniSanity::Error.new(name,
         "#{self.class} not matching #{regexp.inspect}",
         self.inspect)
