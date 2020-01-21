@@ -30,6 +30,7 @@ end.uniq
 ## API
 
 - [Object](https://www.rubydoc.info/gems/mini_sanity/Object)
+  - [#assert!](https://www.rubydoc.info/gems/mini_sanity/Object:assert%21)
   - [#assert_equal!](https://www.rubydoc.info/gems/mini_sanity/Object:assert_equal%21)
   - [#assert_in!](https://www.rubydoc.info/gems/mini_sanity/Object:assert_in%21)
   - [#assert_instance_of!](https://www.rubydoc.info/gems/mini_sanity/Object:assert_instance_of%21)
