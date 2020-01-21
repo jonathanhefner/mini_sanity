@@ -37,6 +37,7 @@ end.uniq
   - [#assert_kind_of!](https://www.rubydoc.info/gems/mini_sanity/Object:assert_kind_of%21)
   - [#assert_nil!](https://www.rubydoc.info/gems/mini_sanity/Object:assert_nil%21)
   - [#assert_respond_to!](https://www.rubydoc.info/gems/mini_sanity/Object:assert_respond_to%21)
+  - [#refute!](https://www.rubydoc.info/gems/mini_sanity/Object:refute%21)
   - [#refute_equal!](https://www.rubydoc.info/gems/mini_sanity/Object:refute_equal%21)
   - [#refute_in!](https://www.rubydoc.info/gems/mini_sanity/Object:refute_in%21)
   - [#refute_nil!](https://www.rubydoc.info/gems/mini_sanity/Object:refute_nil%21)

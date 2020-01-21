@@ -68,6 +68,73 @@ class Object
     self
   end
 
+  # Checks that a given +pattern+ does not match the Object (or a
+  # derivative value), and returns the Object.  Raises an exception if
+  # the pattern matches.
+  #
+  # If a block is given, the Object is yielded to the block, and the
+  # derivative value returned by the block is checked instead.
+  #
+  # @example Refute truthy
+  #   false.refute!  # == false
+  #   "bad".refute!  # raises exception
+  #
+  # @example Refute forbidden value
+  #   "foo".refute!("bad")  # == "foo"
+  #   "bad".refute!("bad")  # raises exception
+  #
+  # @example Refute Set of prohibited values
+  #   "foo".refute!(Set["bad", "worse"])  # == "foo"
+  #   "bad".refute!(Set["bad", "worse"])  # raises exception
+  #
+  # @example Refute Class
+  #   25.refute!(Float)   # == 25
+  #   2.5.refute!(Float)  # raises exception
+  #
+  # @example Refute Regexp
+  #   "foo".refute!(/^ba/)  # == "foo"
+  #   "bad".refute!(/^ba/)  # raises exception
+  #
+  # @example Refute Range
+  #   2.refute!(5..)  # == 2
+  #   5.refute!(5..)  # raises exception
+  #
+  # @example Refute truthy derivative value
+  #   [2].refute!(&:empty?)  # == [2]
+  #   [].refute!(&:empty?)   # raises exception
+  #
+  # @example Refute derivative value
+  #   [2].refute!(1.., &:length)     # == [2]
+  #   [2, 5].refute!(1.., &:length)  # raises exception
+  #
+  # @overload refute!(pattern = MiniSanity::TRUTHY, name: nil)
+  #   @param pattern [#===]
+  #   @param name [String, Symbol]
+  #     Name to include in the error message
+  #   @return [self]
+  #   @raise [MiniSanity::Error]
+  #     if +pattern+ matches the Object
+  #
+  # @overload refute!(pattern = MiniSanity::TRUTHY, name: nil, &block)
+  #   @param pattern [#===]
+  #   @param name [String, Symbol]
+  #     Name to include in the error message
+  #   @yieldparam itself [self]
+  #   @yieldreturn [Object]
+  #     Derivative value
+  #   @return [self]
+  #   @raise [MiniSanity::Error]
+  #     if +pattern+ matches the value returned by +block+
+  def refute!(pattern = MiniSanity::TRUTHY, name: nil, &block)
+    result = block ? block.call(self) : self
+    if pattern === result
+      raise MiniSanity::Error.new(name,
+        "#{MiniSanity::Error.describe_value(&block)} does not match #{pattern.inspect}",
+        self.inspect)
+    end
+    self
+  end
+
   # Checks that the Object is nil, and returns nil.  Raises an exception
   # if the Object fails this check.
   #
