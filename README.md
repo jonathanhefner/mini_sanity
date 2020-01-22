@@ -41,8 +41,6 @@ some function, check an assertion on the result, and raise an error with
 a helpful message if the assertion fails.  You must add
 `require "mini_sanity/util"` to your script to access these methods.
 
-- [Enumerable](https://www.rubydoc.info/gems/mini_sanity/Enumerable)
-  - [#first!](https://www.rubydoc.info/gems/mini_sanity/Enumerable:first%21)
 - [Regexp](https://www.rubydoc.info/gems/mini_sanity/Regexp)
   - [#match!](https://www.rubydoc.info/gems/mini_sanity/Regexp:match%21)
 - [String](https://www.rubydoc.info/gems/mini_sanity/String)
