@@ -135,27 +135,4 @@ class Object
     self
   end
 
-  # Checks that the Object responds to a given method, and returns the
-  # Object unmodified.  Raises an exception if the Object fails this
-  # check.
-  #
-  # @example
-  #   "abc".assert_respond_to!(:empty?)  # == "abc"
-  #   "abc".assert_respond_to!(:pop)     # raises exception
-  #
-  # @param method_name [String, Symbol]
-  # @param name [String, Symbol]
-  #   Name to include in the error message
-  # @return [self]
-  # @raise [MiniSanity::Error]
-  #   if the Object does not respond to +method_name+
-  def assert_respond_to!(method_name, name = nil)
-    if !self.respond_to?(method_name)
-      raise MiniSanity::Error.new(name,
-        "object responding to method #{method_name}",
-        "instance of #{self.class}: #{self.inspect}")
-    end
-    self
-  end
-
 end

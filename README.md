@@ -31,7 +31,6 @@ end.uniq
 
 - [Object](https://www.rubydoc.info/gems/mini_sanity/Object)
   - [#assert!](https://www.rubydoc.info/gems/mini_sanity/Object:assert%21)
-  - [#assert_respond_to!](https://www.rubydoc.info/gems/mini_sanity/Object:assert_respond_to%21)
   - [#refute!](https://www.rubydoc.info/gems/mini_sanity/Object:refute%21)
 
 

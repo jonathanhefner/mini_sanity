@@ -89,12 +89,4 @@ class ObjectTest < Minitest::Test
     assert_match "swapcase", error.message
   end
 
-  def test_assert_respond_to_pass
-    assert_sanity([]){|array| array.assert_respond_to!(:empty?) }
-  end
-
-  def test_assert_respond_to_fail
-    refute_sanity([]){|array, name| array.assert_respond_to!(:gsub, name) }
-  end
-
 end
