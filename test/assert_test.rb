@@ -1,6 +1,7 @@
 require "test_helper"
+require "mini_sanity/assert"
 
-class ObjectTest < Minitest::Test
+class AssertTest < Minitest::Test
 
   AN_INT = 9000
 

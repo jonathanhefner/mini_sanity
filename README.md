@@ -29,24 +29,15 @@ end.uniq
 
 ## API
 
-- [Object](https://www.rubydoc.info/gems/mini_sanity/Object)
-  - [#assert!](https://www.rubydoc.info/gems/mini_sanity/Object:assert%21)
-  - [#refute!](https://www.rubydoc.info/gems/mini_sanity/Object:refute%21)
-
-
-## Util API
-
-*mini_sanity* also includes a few optional utility methods which perform
-some function, check an assertion on the result, and raise an error with
-a helpful message if the assertion fails.  You must add
-`require "mini_sanity/util"` to your script to access these methods.
-
-- [Regexp](https://www.rubydoc.info/gems/mini_sanity/Regexp)
-  - [#match!](https://www.rubydoc.info/gems/mini_sanity/Regexp:match%21)
-- [String](https://www.rubydoc.info/gems/mini_sanity/String)
-  - [#change](https://www.rubydoc.info/gems/mini_sanity/String:change)
-  - [#change!](https://www.rubydoc.info/gems/mini_sanity/String:change%21)
-  - [#match!](https://www.rubydoc.info/gems/mini_sanity/String:match%21)
+- `"mini_sanity/assert"`
+  - [Object#assert!](https://www.rubydoc.info/gems/mini_sanity/Object:assert%21)
+  - [Object#refute!](https://www.rubydoc.info/gems/mini_sanity/Object:refute%21)
+- `"mini_sanity/change"`
+  - [String#change](https://www.rubydoc.info/gems/mini_sanity/String:change)
+  - [String#change!](https://www.rubydoc.info/gems/mini_sanity/String:change%21)
+- `"mini_sanity/match"`
+  - [Regexp#match!](https://www.rubydoc.info/gems/mini_sanity/Regexp:match%21)
+  - [String#match!](https://www.rubydoc.info/gems/mini_sanity/String:match%21)
 
 
 ## Installation
@@ -61,7 +52,6 @@ Then require in your Ruby code:
 
 ```ruby
 require "mini_sanity"
-require "mini_sanity/util" # OPTIONAL
 ```
 
 

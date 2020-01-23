@@ -1,3 +1,16 @@
+require_relative "error"
+
+
+module MiniSanity
+  # Matches truthy values (i.e. not +false+ or +nil+).
+  TRUTHY = ->(x){ !!x }
+
+  def TRUTHY.inspect
+    "MiniSanity::TRUTHY"
+  end
+end
+
+
 class Object
 
   # Checks that a given +pattern+ matches the Object (or a derivative

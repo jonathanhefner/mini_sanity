@@ -1,4 +1,5 @@
 require "test_helper"
+require "mini_sanity"
 
 class MiniSanityTest < Minitest::Test
 
