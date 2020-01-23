@@ -19,11 +19,15 @@ class String
   #   if +pattern+ does not match the String
   def match!(pattern, pos = 0)
     result = self.match(pattern, pos)
+
     if result.nil?
-      raise MiniSanity::Error.new(nil,
-        "String matching #{pattern.inspect}#{" from position #{pos}" if pos != 0}",
-        self.inspect)
+      raise MiniSanity::Error.new("String does not match pattern", {
+        "String" => self.inspect,
+        "Relevant portion (from position #{pos})" => (self[pos..].inspect if pos != 0),
+        "Pattern" => pattern.inspect,
+      })
     end
+
     result
   end
 

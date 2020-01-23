@@ -21,6 +21,17 @@ class ChangeTest < Minitest::Test
     end
   end
 
+  def test_changebang_error_message
+    string = "Foo Bar"
+    pattern = /#{string.reverse}/
+
+    error = assert_raises(MiniSanity::Error) do
+      string.change!(pattern, "")
+    end
+    assert_match string.inspect, error.message
+    assert_match pattern.inspect, error.message
+  end
+
   def test_change_like_sub
     strings = %w[abc aaa x]
     pattern = /a/

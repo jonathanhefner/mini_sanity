@@ -53,31 +53,37 @@ class Object
   #   [2, 5].assert!(1.., &:length)  # == [2, 5]
   #   [].assert!(1.., &:length)      # raises exception
   #
-  # @overload assert!(pattern = MiniSanity::TRUTHY, name: nil)
+  # @overload assert!(pattern = MiniSanity::TRUTHY, hint: nil)
   #   @param pattern [#===]
-  #   @param name [String, Symbol]
-  #     Name to include in the error message
+  #   @param hint [String]
+  #     Hint to include in the error message
   #   @return [self]
   #   @raise [MiniSanity::Error]
   #     if +pattern+ does not match the Object
   #
-  # @overload assert!(pattern = MiniSanity::TRUTHY, name: nil, &block)
+  # @overload assert!(pattern = MiniSanity::TRUTHY, hint: nil, &block)
   #   @param pattern [#===]
-  #   @param name [String, Symbol]
-  #     Name to include in the error message
+  #   @param hint [String]
+  #     Hint to include in the error message
   #   @yieldparam itself [self]
   #   @yieldreturn [Object]
   #     Derivative value
   #   @return [self]
   #   @raise [MiniSanity::Error]
   #     if +pattern+ does not match the value returned by +block+
-  def assert!(pattern = MiniSanity::TRUTHY, name: nil, &block)
+  def assert!(pattern = MiniSanity::TRUTHY, hint: nil, &block)
     result = block ? block.call(self) : self
+
     unless pattern === result
-      raise MiniSanity::Error.new(name,
-        "#{MiniSanity::Error.describe_value(&block)} matches #{pattern.inspect}",
-        self.inspect)
+      raise MiniSanity::Error.new("Assert failed", {
+        "Value" => self.inspect,
+        "Derived value (from #{MiniSanity::Error.describe_block(&block) || "block"})" =>
+          (result.inspect if block),
+        "Assert matches" => pattern.inspect,
+        "Hint" => hint,
+      })
     end
+
     self
   end
 
@@ -120,31 +126,37 @@ class Object
   #   [2].refute!(1.., &:length)     # == [2]
   #   [2, 5].refute!(1.., &:length)  # raises exception
   #
-  # @overload refute!(pattern = MiniSanity::TRUTHY, name: nil)
+  # @overload refute!(pattern = MiniSanity::TRUTHY, hint: nil)
   #   @param pattern [#===]
-  #   @param name [String, Symbol]
-  #     Name to include in the error message
+  #   @param hint [String]
+  #     Hint to include in the error message
   #   @return [self]
   #   @raise [MiniSanity::Error]
   #     if +pattern+ matches the Object
   #
-  # @overload refute!(pattern = MiniSanity::TRUTHY, name: nil, &block)
+  # @overload refute!(pattern = MiniSanity::TRUTHY, hint: nil, &block)
   #   @param pattern [#===]
-  #   @param name [String, Symbol]
-  #     Name to include in the error message
+  #   @param hint [String]
+  #     Hint to include in the error message
   #   @yieldparam itself [self]
   #   @yieldreturn [Object]
   #     Derivative value
   #   @return [self]
   #   @raise [MiniSanity::Error]
   #     if +pattern+ matches the value returned by +block+
-  def refute!(pattern = MiniSanity::TRUTHY, name: nil, &block)
+  def refute!(pattern = MiniSanity::TRUTHY, hint: nil, &block)
     result = block ? block.call(self) : self
+
     if pattern === result
-      raise MiniSanity::Error.new(name,
-        "#{MiniSanity::Error.describe_value(&block)} does not match #{pattern.inspect}",
-        self.inspect)
+      raise MiniSanity::Error.new("Refute failed", {
+        "Value" => self.inspect,
+        "Derived value (from #{MiniSanity::Error.describe_block(&block) || "block"})" =>
+          (result.inspect if block),
+        "Refute matches" => pattern.inspect,
+        "Hint" => hint,
+      })
     end
+
     self
   end
 

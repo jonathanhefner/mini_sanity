@@ -35,17 +35,18 @@ class AssertTest < Minitest::Test
   end
 
   def test_assertbang_error_message
-    name = "fail to win"
+    hint = "fail to win"
     string = "Foo Bar"
     pattern = /#{string.reverse}/
 
     error = assert_raises(MiniSanity::Error) do
-      string.assert!(pattern, name: name, &:swapcase)
+      string.assert!(pattern, hint: hint, &:swapcase)
     end
-    assert_match name, error.message
+    assert_match hint, error.message
     assert_match string.inspect, error.message
     assert_match pattern.inspect, error.message
     assert_match "swapcase", error.message
+    assert_match string.swapcase.inspect, error.message
   end
 
   def test_refutebang_with_truthy
@@ -77,17 +78,18 @@ class AssertTest < Minitest::Test
   end
 
   def test_refutebang_error_message
-    name = "fail to win"
+    hint = "fail to win"
     string = "Foo Bar"
     pattern = /#{string.upcase}/i
 
     error = assert_raises(MiniSanity::Error) do
-      string.refute!(pattern, name: name, &:swapcase)
+      string.refute!(pattern, hint: hint, &:swapcase)
     end
-    assert_match name, error.message
+    assert_match hint, error.message
     assert_match string.inspect, error.message
     assert_match pattern.inspect, error.message
     assert_match "swapcase", error.message
+    assert_match string.swapcase.inspect, error.message
   end
 
 end

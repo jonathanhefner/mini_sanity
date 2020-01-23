@@ -21,4 +21,18 @@ class MatchTest < Minitest::Test
     end
   end
 
+  def test_matchbang_error_message
+    string = "Foo Bar"
+    pattern = /#{string.reverse}/
+    pos = -(string.length / 2)
+
+    error = assert_raises(MiniSanity::Error) do
+      string.match!(pattern, pos)
+    end
+    assert_match string.inspect, error.message
+    assert_match string[pos..].inspect, error.message
+    assert_match pos.to_s, error.message
+    assert_match pattern.inspect, error.message
+  end
+
 end

@@ -51,9 +51,10 @@ class String
     end
 
     if !result
-      raise MiniSanity::Error.new(nil,
-        "String matching #{pattern.inspect}",
-        self.inspect)
+      raise MiniSanity::Error.new("String does not match pattern", {
+        "String" => self.inspect,
+        "Pattern" => pattern.inspect,
+      })
     end
 
     result
