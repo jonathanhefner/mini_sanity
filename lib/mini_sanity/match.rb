@@ -47,13 +47,7 @@ class Regexp
   # @raise [MiniSanity::Error]
   #   if the Regexp does not match +str+
   def match!(str, pos = 0)
-    result = self.match(str, pos)
-    if result.nil?
-      raise MiniSanity::Error.new(nil,
-        "String matching #{self.inspect}#{" from position #{pos}" if pos != 0}",
-        str.inspect)
-    end
-    result
+    str.match!(self, pos)
   end
 
 end
