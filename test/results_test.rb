@@ -38,4 +38,23 @@ class ResultsTest < Minitest::Test
     assert_raises(ArgumentError){ [1].select.results! }
   end
 
+  def test_resultbang_when_non_nil_result
+    collection = 1..5
+    assert_equal collection.find(&:even?), collection.find.result!(&:even?)
+  end
+
+  def test_resultbang_when_nil_result
+    enum = (1..5).find
+
+    error = assert_raises(MiniSanity::Error) do
+      enum.results!(&:infinite?)
+    end
+    assert_match enum.inspect, error.message
+    assert_match "infinite?", error.message
+  end
+
+  def test_resultbang_requires_block
+    assert_raises(ArgumentError){ [1].find.result! }
+  end
+
 end

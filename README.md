@@ -39,6 +39,7 @@ end.uniq
   - [Regexp#match!](https://www.rubydoc.info/gems/mini_sanity/Regexp:match%21)
   - [String#match!](https://www.rubydoc.info/gems/mini_sanity/String:match%21)
 - `"mini_sanity/results"`
+  - [Enumerator#result!](https://www.rubydoc.info/gems/mini_sanity/Enumerator:result%21)
   - [Enumerator#results!](https://www.rubydoc.info/gems/mini_sanity/Enumerator:results%21)
 
 
