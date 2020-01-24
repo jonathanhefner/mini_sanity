@@ -38,6 +38,8 @@ end.uniq
 - `"mini_sanity/match"`
   - [Regexp#match!](https://www.rubydoc.info/gems/mini_sanity/Regexp:match%21)
   - [String#match!](https://www.rubydoc.info/gems/mini_sanity/String:match%21)
+- `"mini_sanity/results"`
+  - [Enumerator#results!](https://www.rubydoc.info/gems/mini_sanity/Enumerator:results%21)
 
 
 ## Installation
