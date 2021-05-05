@@ -1,4 +1,4 @@
-# mini_sanity [![Build Status](https://travis-ci.org/jonathanhefner/mini_sanity.svg?branch=master)](https://travis-ci.org/jonathanhefner/mini_sanity)
+# mini_sanity
 
 In-line [sanity checks], written as extensions to core Ruby objects.
 See API listing below, or browse the [full documentation].
