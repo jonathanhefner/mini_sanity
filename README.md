@@ -45,17 +45,7 @@ end.uniq
 
 ## Installation
 
-Install the [gem](https://rubygems.org/gems/mini_sanity):
-
-```bash
-$ gem install mini_sanity
-```
-
-Then require in your Ruby code:
-
-```ruby
-require "mini_sanity"
-```
+Install the [`mini_sanity` gem](https://rubygems.org/gems/mini_sanity).
 
 
 ## Contributing
