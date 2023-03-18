@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{In-line sanity checks}
   spec.homepage      = "https://github.com/jonathanhefner/mini_sanity"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.6"
+  spec.required_ruby_version = ">= 2.7"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
