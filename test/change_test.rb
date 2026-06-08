@@ -4,7 +4,7 @@ require "mini_sanity/change"
 class ChangeTest < Minitest::Test
 
   def test_changebang_like_subbang
-    strings = %w[abc aaa x]
+    strings = [+"abc", +"aaa", +"x"]
     pattern = /a/
     replacement = ""
 
@@ -22,7 +22,7 @@ class ChangeTest < Minitest::Test
   end
 
   def test_changebang_error_message
-    string = "Foo Bar"
+    string = +"Foo Bar"
     pattern = /#{string.reverse}/
 
     error = assert_raises(MiniSanity::Error) do
@@ -33,7 +33,7 @@ class ChangeTest < Minitest::Test
   end
 
   def test_change_like_sub
-    strings = %w[abc aaa x]
+    strings = ["abc", "aaa", "x"]
     pattern = /a/
     replacement = ""
 
