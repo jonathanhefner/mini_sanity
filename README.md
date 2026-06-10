@@ -1,7 +1,7 @@
 # mini_sanity
 
-In-line [sanity checks], written as extensions to core Ruby objects.
-See API listing below, or browse the [full documentation].
+In-line [sanity checks][], written as extensions to core Ruby objects.
+See API listing below, or browse the [full documentation][].
 
 [sanity checks]: https://en.wikipedia.org/wiki/Sanity_check
 [full documentation]: https://www.rubydoc.info/gems/mini_sanity/
@@ -30,17 +30,17 @@ end.uniq
 ## API
 
 - `"mini_sanity/assert"`
-  - [Object#assert!](https://www.rubydoc.info/gems/mini_sanity/Object:assert%21)
-  - [Object#refute!](https://www.rubydoc.info/gems/mini_sanity/Object:refute%21)
+  - [`Object#assert!`](https://www.rubydoc.info/gems/mini_sanity/Object:assert%21)
+  - [`Object#refute!`](https://www.rubydoc.info/gems/mini_sanity/Object:refute%21)
 - `"mini_sanity/change"`
-  - [String#change](https://www.rubydoc.info/gems/mini_sanity/String:change)
-  - [String#change!](https://www.rubydoc.info/gems/mini_sanity/String:change%21)
+  - [`String#change`](https://www.rubydoc.info/gems/mini_sanity/String:change)
+  - [`String#change!`](https://www.rubydoc.info/gems/mini_sanity/String:change%21)
 - `"mini_sanity/match"`
-  - [Regexp#match!](https://www.rubydoc.info/gems/mini_sanity/Regexp:match%21)
-  - [String#match!](https://www.rubydoc.info/gems/mini_sanity/String:match%21)
+  - [`Regexp#match!`](https://www.rubydoc.info/gems/mini_sanity/Regexp:match%21)
+  - [`String#match!`](https://www.rubydoc.info/gems/mini_sanity/String:match%21)
 - `"mini_sanity/results"`
-  - [Enumerator#result!](https://www.rubydoc.info/gems/mini_sanity/Enumerator:result%21)
-  - [Enumerator#results!](https://www.rubydoc.info/gems/mini_sanity/Enumerator:results%21)
+  - [`Enumerator#result!`](https://www.rubydoc.info/gems/mini_sanity/Enumerator:result%21)
+  - [`Enumerator#results!`](https://www.rubydoc.info/gems/mini_sanity/Enumerator:results%21)
 
 
 ## Installation
