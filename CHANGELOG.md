@@ -1,3 +1,8 @@
+## 3.0.0
+
+* [BREAKING] Drop support for Ruby < 3.4
+
+
 ## 2.0.0
 
 * [BREAKING] Drop support for Ruby < 2.6
